@@ -1,5 +1,5 @@
 // numbers[row][column] = val, where then number is 2^{val}
-var numbers = [[11, 0, 0, 0], [1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+var numbers = [[0, 0, 0, 0], [1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
 const numSquares = 4;
 
@@ -51,8 +51,8 @@ class gameClient{
 
     // Create a new element
     let [r, c] = randomEmpty()
-    numbers[r][c] = 1
-    creationArray.push([1, r, c])
+    numbers[r][c] = Math.floor(Math.random() * 2) + 1
+    creationArray.push([numbers[r][c], r, c])
 
     // Check to see if there are any other possible moves
     if(!this.hasMoves()){
@@ -83,7 +83,7 @@ class finishedClient{
 
   update(){
     render()
-    drawImageP(10, 10, 80, 80, "textBox")
+    drawImageP(10, 10, 80, 80, "textBox", 0.6)
 
     let text = "You Lost!"
     let contText = "Press any key to restart"

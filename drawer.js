@@ -141,14 +141,16 @@ function drawLines() {
 }
 
 // Draw an image at some place, image is just id
-function drawImage(x, y, width, height, image) {
+function drawImage(x, y, width, height, image, opacity) {
+  ctx.globalAlpha = opacity;
   ctx.drawImage(images[image], x, y, width, height);
+  ctx.globalAlpha = 1
 }
 
 // drawImage but for the resizables, image is just id
-function drawImageP(x, y, width, height, image) {
+function drawImageP(x, y, width, height, image, opacity = 1) {
   ratio = length * 0.01
-  drawImage(x * ratio, y * ratio, width * ratio, height * ratio, image)
+  drawImage(x * ratio, y * ratio, width * ratio, height * ratio, image, opacity)
 }
 
 // fill a rectangle with some color
@@ -186,12 +188,14 @@ function drawBackground(){
   drawLines();
 }
 
-function fillTextP(text, size, centerX, centerY, color){
+function fillTextP(text, size, centerX, centerY, color, opacity = 1){
   ratio = length * 0.01
 
   ctx.fillStyle = color
   ctx.font = size * ratio + "px Arial bold"
   ctx.textAlign = "center";
 
+  ctx.globalAlpha = opacity
   ctx.fillText(text, centerX * ratio, centerY * ratio)
+  ctx.globalAlpha = 1
 }
