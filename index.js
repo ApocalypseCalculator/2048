@@ -2,15 +2,20 @@ var canvas
 var ctx
 var length
 
+const numSquares = 4;
+const lineWidthP = 2.5;
+const lineColor = "#8a6d5c";
+
 var imagePaths = {
-  numberBack: "numberBackground"
+  border: "border"
 }
 var images = {};
 
 window.onload = function() {
   initialize();
 
-  fillRectP(25, 25, 50, 50, "yellow");
+  drawImageP(0, 0, 100, 100, "border")
+  drawLines();
 }
 
 // initialize variables and stuff
@@ -26,6 +31,28 @@ function initialize(){
   for(var key in imagePaths){
     images[key] = document.getElementById(imagePaths[key]);
   }
+}
+
+function drawLines(){
+  var increase = 100 / numSquares;
+
+  for(var i = 1, x = increase - lineWidthP; i < numSquares; i++, x += increase){
+    fillRectP(x, 0, lineWidthP, length, lineColor);
+    fillRectP(0, x, length, lineWidthP, lineColor);
+  }
+}
+
+// DRAWING FUNCTIONS
+
+// Draw an image at some place
+function drawImage(x, y, width, height, image){
+  ctx.drawImage(images[image], x, y, width, height);
+}
+
+// drawImage but for the resizables
+function drawImageP(x, y, width, height, image){
+  ratio = length * 0.01
+  drawImage(x * ratio, y * ratio, width * ratio, height * ratio, image)
 }
 
 // fill a rectangle with some color
