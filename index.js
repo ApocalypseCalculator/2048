@@ -6,6 +6,8 @@ const numSquares = 4;
 const lineWidthP = 2.5;
 const lineColor = "#8a6d5c";
 
+const numberImagePrefix = "img"
+
 var imagePaths = {
   border: "border"
 }
@@ -28,6 +30,14 @@ function initialize(){
   canvas.width = length;
   canvas.height = length;
 
+  for(let i = 2; i <= 2048; i <<= 1){
+    var image = document.createElement("image")
+    image.src = "./images/" + i + ".png"
+    imagePaths["" + i] = numberImagePrefix + i
+    image.id = numberImagePrefix + i
+    document.getElementById("images").appendChild(image)
+  }
+
   for(var key in imagePaths){
     images[key] = document.getElementById(imagePaths[key]);
   }
@@ -36,7 +46,6 @@ function initialize(){
 function drawLines(){
   var width = 100 - lineWidthP;
   var increase = width / numSquares;
-  console.log(increase);
 
   for(var i = 1, x = increase; i < numSquares; i++, x += increase){
     fillRectP(x, 0, lineWidthP, length, lineColor);
