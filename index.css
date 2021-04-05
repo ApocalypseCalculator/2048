@@ -12,3 +12,8 @@ body{
   align-self: center;
   vertical-align: center;
 }
+
+#title{
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
