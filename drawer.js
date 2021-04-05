@@ -19,7 +19,8 @@ const numberWidth = (100 - lineWidthP) / numSquares - 2 * cellMarginFromLineCent
 const cellInterval = (100 - lineWidthP) / numSquares
 
 var imagePaths = {
-  border: "border"
+  border: "border",
+  textBox: "finishedBox"
 }
 // Elements should be put in as a string, just to stay consistent
 var images = {};
@@ -183,4 +184,14 @@ function drawBackground(){
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   drawImageP(0, 0, 100, 100, "border")
   drawLines();
+}
+
+function fillTextP(text, size, centerX, centerY, color){
+  ratio = length * 0.01
+
+  ctx.fillStyle = color
+  ctx.font = size * ratio + "px Arial bold"
+  ctx.textAlign = "center";
+
+  ctx.fillText(text, centerX * ratio, centerY * ratio)
 }
