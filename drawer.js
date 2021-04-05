@@ -5,8 +5,9 @@ var ctx
 var length
 
 const numSquares = 4;
-const lineWidthP = 2.5;
+const lineWidthP = 4;
 const lineColor = "#8a6d5c";
+const cellMarginFromLineCenter = 1;
 
 const numberImagePrefix = "img"
 
@@ -30,8 +31,8 @@ function initialize() {
   canvas.height = length;
 
   for (let i = 2; i <= 2048; i <<= 1) {
-    var image = document.createElement("image")
-    image.src = "./images/" + i + ".png"
+    var image = document.createElement("img")
+    image.src = "./images/tiles/" + i + ".png"
     imagePaths["" + i] = numberImagePrefix + i
     image.id = numberImagePrefix + i
     document.getElementById("images").appendChild(image)
@@ -39,6 +40,22 @@ function initialize() {
 
   for (var key in imagePaths) {
     images[key] = document.getElementById(imagePaths[key]);
+  }
+}
+
+// Rendering the array
+function render(numbers){
+  drawImageP(0, 0, 100, 100, "border")
+  drawLines();
+
+
+  for(let x = 0; x < numbers.length; ++x){
+    for(let y = 0; y < numbers.length; ++y){
+      if(numbers[x][y] == 0){
+        continue;
+      }
+      drawCell(x, y, 1 << numbers[x][y]);
+    }
   }
 }
 
@@ -56,12 +73,12 @@ function drawLines() {
   }
 }
 
-// Draw an image at some place
+// Draw an image at some place, image is just id
 function drawImage(x, y, width, height, image) {
   ctx.drawImage(images[image], x, y, width, height);
 }
 
-// drawImage but for the resizables
+// drawImage but for the resizables, image is just id
 function drawImageP(x, y, width, height, image) {
   ratio = length * 0.01
   drawImage(x * ratio, y * ratio, width * ratio, height * ratio, image)
@@ -77,4 +94,14 @@ function fillRect(x, y, width, height, color) {
 function fillRectP(x, y, width, height, color) {
   ratio = length * 0.01
   fillRect(x * ratio, y * ratio, width * ratio, height * ratio, color)
+}
+
+function drawCell(x, y, value){
+  increase = (100 - lineWidthP) / numSquares
+
+  width = increase - 2 * cellMarginFromLineCenter
+  x = x * increase + lineWidthP / 2 + cellMarginFromLineCenter;
+  y = y * increase + lineWidthP / 2 + cellMarginFromLineCenter
+
+  drawImageP(x, y, width, width, value)
 }
