@@ -34,9 +34,11 @@ function initialize(){
 }
 
 function drawLines(){
-  var increase = 100 / numSquares;
+  var width = 100 - lineWidthP;
+  var increase = width / numSquares;
+  console.log(increase);
 
-  for(var i = 1, x = increase - lineWidthP; i < numSquares; i++, x += increase){
+  for(var i = 1, x = increase; i < numSquares; i++, x += increase){
     fillRectP(x, 0, lineWidthP, length, lineColor);
     fillRectP(0, x, length, lineWidthP, lineColor);
   }
