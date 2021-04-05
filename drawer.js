@@ -44,7 +44,8 @@ function initialize() {
 }
 
 // Rendering the array
-function render(numbers){
+function render_grid(numbers){
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
   drawImageP(0, 0, 100, 100, "border")
   drawLines();
 
