@@ -4,7 +4,6 @@ var canvas
 var ctx
 var length
 
-const numSquares = 4;
 const lineWidthP = 4;
 const lineColor = "#8a6d5c";
 const cellMarginFromLineCenter = 1;
@@ -50,12 +49,12 @@ function render_grid(numbers){
   drawLines();
 
 
-  for(let x = 0; x < numbers.length; ++x){
-    for(let y = 0; y < numbers.length; ++y){
-      if(numbers[x][y] == 0){
+  for(let y = 0; y < numbers.length; ++y){
+    for(let x = 0; x < numbers.length; ++x){
+      if(numbers[y][x] == 0){
         continue;
       }
-      drawCell(x, y, 1 << numbers[x][y]);
+      drawCell(x, y, 1 << numbers[y][x]);
     }
   }
 }
