@@ -8,6 +8,7 @@ class gameClient{
     this.freeplay = freeplay
   }
   update(){
+    document.getElementById("score").innerHTML = "Score: " + this.getSum();
     if(!handlingAnimation){
       render();
     }
@@ -15,6 +16,15 @@ class gameClient{
       currentClient = new finishedClient(false)
       return
     }
+  }
+  getSum(){
+    let s = 0;
+    for(let i = 0; i < numSquares; ++i){
+      for(let c = 0; c < numSquares; ++c){
+        s += numbers[i][c] != 0 ? 1 << numbers[i][c] : 0
+      }
+    }
+    return s;
   }
   hasMoves(){
     for(let direction of ["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp"]){
