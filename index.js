@@ -13,7 +13,7 @@ var currentClient;
 
 
 // MAIN FUNCTION --------------------------------------------------------------------------------------------------
-window.onload = function() {
+window.onload = function () {
   initialize();
   currentClient = new gameClient();
 
@@ -125,7 +125,7 @@ class gameClient {
 
     // Create a new element
     let [r, c] = randomEmpty()
-    numbers[r][c] = Math.floor(Math.random() * 2) + 1
+    numbers[r][c] = randInt(1, 2)
     creationArray.push([numbers[r][c], r, c])
 
     // Check to see if there are any other possible moves
@@ -290,5 +290,17 @@ function randomEmpty() {
   }
 
   // return a random one
-  return possibles[Math.floor(Math.random() * possibles.length)]
+  return possibles[randInt(0, possibles.length - 1)];
+}
+
+function randInt(min, max) {
+  //staccoverflow to the rescue
+  let byteArray = new Uint8Array(1);
+  window.crypto.getRandomValues(byteArray);
+  let range = max - min + 1;
+  let max_range = 256;
+  if (byteArray[0] >= Math.floor(max_range / range) * range) {
+    return getRandomInt(min, max);
+  }
+  return min + (byteArray[0] % range);
 }
