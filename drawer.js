@@ -42,7 +42,6 @@ var handlingAnimation = false
 
 // initialize variables and stuff
 function initialize() {
-  console.log("hi")
   // Initialize canvas
   canvas = document.getElementById("mainCanvas");
   ctx = canvas.getContext("2d");
