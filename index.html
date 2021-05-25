@@ -1,23 +1,33 @@
 <html>
 
-  <head>
-    <link href="./index.css" rel="stylesheet" type="text/css"/>
-    <script src="./index.js"></script>
-    <script src="./drawer.js"></script>
-    <title>2048</title>
-  </head>
+<head>
+  <title>2048</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="Trentiumz">
+  <meta name="og:description" content="2048 Game">
+  <meta name="og:image" content="./images/title.png">
+  <link rel="icon" type="image/png" size="32x32" href="./images/title.png">
+  <link rel="apple-touch-icon" type="image/png" href="./images/title.png">
+  <link rel="stylesheet" type="text/css" href="./index.css"
+    integrity="sha384-BoL8KrFMl4dWoyGBOUWHhzMsE7bpfqwIQAJ3NRJ7CX4XeOhmbRtjirYf5CT3yPw6"/>
+  <script src="./index.js" 
+    integrity="sha384-HWrtqiDAWwp2q+Wca9sCqKJcFAUJVZ4hmU1GbYfdM40wuGsKE6wMh1TN8Gh0F5J7"></script>
+  <script src="./drawer.js"
+    integrity="sha384-sajpP+1Red/QfZHHK44uV+GHH2JhqIUcT9/7yv6BHBVTfQpqiA23tdZyRUAmf9N6"></script>
+</head>
 
-  <body>
-    <img src="./images/title.png" id="title" height="10%"/>
-    <h2 id="score">Score: 2</h2>
-    <div id="container">
-      <canvas width="100%" height="100%" id="mainCanvas"></canvas>
-    </div>
-  </body>
-
-  <div id="images" hidden>
-    <img src="./images/border.png" id="border"/>
-    <img src="./images/FinishedBox.png" id="finishedBox"/>
+<body>
+  <img src="./images/title.png" id="title" height="10%" />
+  <h2 id="score">Score: 2</h2>
+  <div id="container">
+    <canvas width="100%" height="100%" id="mainCanvas"></canvas>
   </div>
+</body>
+
+<div id="images" hidden>
+  <img src="./images/border.png" id="border" />
+  <img src="./images/FinishedBox.png" id="finishedBox" />
+</div>
 
 </html>
